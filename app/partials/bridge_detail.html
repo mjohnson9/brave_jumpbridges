@@ -1,0 +1,37 @@
+<div class="list-group list-only-page" ng-if="bridge != null">
+    <a href="#/bridges" class="list-group-item">&laquo; Jump bridges<span class="pull-right"><i class="glyphicon glyphicon-list"></i></span></a>
+    <span class="list-group-item"><a href="https://evemaps.dotlan.net/system/{{bridge.nameA}}/{{bridge.planetA|romanize}}-Moon-{{bridge.moonA}}" target="_blank" title="DOTLAN :: EveMaps">{{bridge.nameA}} {{bridge.planetA}}-{{bridge.moonA}}</a> &harr; <a href="https://evemaps.dotlan.net/system/{{bridge.nameB}}/{{bridge.planetB|romanize}}-Moon-{{bridge.moonB}}" target="_blank" title="DOTLAN :: EveMaps">{{bridge.nameB}} {{bridge.planetB}}-{{bridge.moonB}}</a></span>
+    <span class="list-group-item" ng-class="{'list-group-item-success': bridge.friendly, 'list-group-item-danger': !bridge.friendly}">
+        <h4 class="list-group-item-heading">Owner</h4>
+        <p class="list-group-item-text"><abbr title="Not Yet Implemented">NYI</abbr></p>
+    </span>
+</div>
+<div class="list-group list-only-page" ng-if="bridge == null">
+    <a href="#/bridges" class="list-group-item">&laquo; Jump bridges<span class="pull-right"><i class="glyphicon glyphicon-list"></i></span></a>
+    <span class="list-group-item list-group-item-warning" ng-if="loginRequired">
+        <h4 class="list-group-item-heading">Login Required</h4>
+        <p class="list-group-item-text">You must be logged into Brave Intel for this to work.</p>
+        <a href="https://intel.bravecollective.com/" target="_blank" style="margin-top:5px" class="list-group-item-text btn btn-primary btn-block">Login</a>
+        <a href="" ng-click="reloadPage()" style="margin-top:5px" class="list-group-item-text btn btn-success btn-block">Retry</a>
+    </span>
+    <span class="list-group-item list-group-item-info" ng-if="bridge === undefined && !loginRequired">
+        <h4 class="list-group-item-heading">Loading...</h4>
+    </span>
+    <span class="list-group-item list-group-item-danger" ng-if="bridge === null">
+        <h4 class="list-group-item-heading">Not Found</h4>
+        <p class="list-group-item-text">We couldn't find that jump bridge.</p>
+    </span>
+</div>
+
+<!-- <div class="container-fluid">
+    <div class="row" ng-if="bridge === null">
+        <div class="alert alert-danger" style="margin-bottom:1px"><strong>Not found</strong> We couldn't find that jump bridge.</div>
+        <a href="#/bridges" class="btn btn-block btn-primary">&laquo; Jump bridges</a>
+    </div>
+    <div class="row" ng-if="bridge != null">
+        <h1 ng-class="{'text-success': bridge.friendly, 'text-danger': !bridge.friendly}">{{bridge.nameA}}<br/>&harr;<br/>{{bridge.nameB}}</h1>
+        <dl class="dl-horizontal">
+            <dt>Friendly</dt><dd>{{bridge.friendly ? 'Yes' : 'No'}}</dd>
+        </dl>
+    </div>
+</div> -->

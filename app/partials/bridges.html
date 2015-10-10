@@ -1,0 +1,21 @@
+<div class="list-group list-only-page">
+    <a href="#/" class="list-group-item">&laquo; Home<span class="pull-right"><i class="glyphicon glyphicon-list-alt"></i></span></a>
+    <span class="list-group-item list-group-item-warning" ng-if="loginRequired">
+        <h4 class="list-group-item-heading">Login Required</h4>
+        <p class="list-group-item-text">You must be logged into Brave Intel for this to work.</p>
+        <a href="https://intel.bravecollective.com/" target="_blank" style="margin-top:5px" class="list-group-item-text btn btn-primary btn-block">Login</a>
+        <a href="" ng-click="reloadPage()" style="margin-top:5px" class="list-group-item-text btn btn-success btn-block">Retry</a>
+    </span>
+    <span class="list-group-item list-group-item-info" ng-if="bridges === undefined && !loginRequired">
+        <h4 class="list-group-item-heading">Loading...</h4>
+    </span>
+    <a href="" ng-click="copyGTS()" class="list-group-item" ng-if="bridges !== undefined" title="Has the same effect as copying the jump bridge list from a wiki. You can use the Jump Bridge Import in GTS to easily import this list.">Copy for GTS import</a>
+    <span class="list-group-item list-group-item-warning" ng-if="bridges.length <= 0">
+        <h4 class="list-group-item-heading">No Bridges</h4>
+        <p class="list-group-item-text">We were unable to find any jump bridges.</p>
+    </span>
+    <a href="#/bridges/{{bridge.idA}}-{{bridge.idB}}" ng-repeat="bridge in bridges | orderBy:['-friendly','nameA']" class="list-group-item" ng-class="{'list-group-item-success': bridge.friendly, 'list-group-item-danger': !bridge.friendly}">
+        <h4 class="list-group-item-heading">{{bridge.nameA}} &harr; {{bridge.nameB}}</h4>
+        <!-- <p class="list-group-item-text">TODO</p> -->
+    </a>
+</div>

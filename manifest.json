@@ -1,0 +1,27 @@
+{
+    "manifest_version": 2,
+
+    "name": "BRAVE Utilities",
+    "description": "Offers a number of utilities for HERO members.",
+    "version": "0.1",
+
+    "permissions": [
+        "clipboardWrite",
+
+        "https://intel.bravecollective.com/BraveIntelServer/*"
+    ],
+
+    "icons": {
+        "16": "icon_16.png",
+        "32": "icon_32.png",
+        "64": "icon_64.png",
+        "128": "icon_128.png"
+    },
+
+    "app": {
+        "launch": {
+            "local_path": "app/index.html",
+            "container": "panel"
+        }
+    }
+}
